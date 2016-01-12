@@ -14,8 +14,7 @@ AUTOMATED_TESTS =	\
 	test-streams	\
 	test-cat	\
 	test-headers	\
-	test-mbox	\
-	test-mime
+	test-mbox	
 
 if ENABLE_CRYPTOGRAPHY
 AUTOMATED_TESTS +=	\

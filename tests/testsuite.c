@@ -34,7 +34,7 @@
 static struct _stack *stack = NULL;
 static int total_errors = 0;
 static int total_tests = 0;
-int verbose = 0;
+int verbose = 5;
 
 enum {
 	TEST,

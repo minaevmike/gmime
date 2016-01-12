@@ -438,11 +438,11 @@ test_rfc2047 (gboolean test_broken)
 		try {
 			dec = g_mime_utils_header_decode_text (rfc2047_text[i].input);
 			if (strcmp (rfc2047_text[i].decoded, dec) != 0)
-				throw (exception_new ("decoded text does not match: %s", dec));
+				throw (exception_new ("decoded text does not match: %s | %s", dec, rfc2047_text[i].decoded));
 			
 			enc = g_mime_utils_header_encode_text (dec);
 			if (strcmp (rfc2047_text[i].encoded, enc) != 0)
-				throw (exception_new ("encoded text does not match: %s", enc));
+				throw (exception_new ("encoded text does not match: %s | %s", enc, rfc2047_text[i].encoded));
 			
 			testsuite_check_passed ();
 		} catch (ex) {

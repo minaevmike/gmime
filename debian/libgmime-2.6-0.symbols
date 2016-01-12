@@ -67,6 +67,7 @@ libgmime-2.6.so.0 libgmime-2.6-0 #MINVER#
  g_mime_content_disposition_get_parameter@Base 2.6.4
  g_mime_content_disposition_get_params@Base 2.6.4
  g_mime_content_disposition_get_type@Base 2.6.4
+ g_mime_content_disposition_is_attachment@Base 2.6.20-1
  g_mime_content_disposition_new@Base 2.6.4
  g_mime_content_disposition_new_from_string@Base 2.6.4
  g_mime_content_disposition_set_disposition@Base 2.6.4
@@ -353,6 +354,7 @@ libgmime-2.6.so.0 libgmime-2.6-0 #MINVER#
  g_mime_part_get_content_object@Base 2.6.4
  g_mime_part_get_filename@Base 2.6.4
  g_mime_part_get_type@Base 2.6.4
+ g_mime_part_is_attachment@Base 2.6.20-1
  g_mime_part_iter_free@Base 2.6.4
  g_mime_part_iter_get_current@Base 2.6.4
  g_mime_part_iter_get_parent@Base 2.6.4
