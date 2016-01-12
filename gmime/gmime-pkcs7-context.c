@@ -514,7 +514,7 @@ pkcs7_get_signatures (Pkcs7Ctx *pkcs7, gboolean verify)
 	gpgme_signature_t sig;
 	gpgme_user_id_t uid;
 	gpgme_key_t key;
-	
+        
 	/* get the signature verification results from GpgMe */
 	if (!(result = gpgme_op_verify_result (pkcs7->ctx)) || !result->signatures)
 		return verify ? g_mime_signature_list_new () : NULL;
@@ -523,7 +523,7 @@ pkcs7_get_signatures (Pkcs7Ctx *pkcs7, gboolean verify)
 	signatures = g_mime_signature_list_new ();
 	
 	sig = result->signatures;
-	
+
 	while (sig != NULL) {
 		signature = g_mime_signature_new ();
 		g_mime_signature_list_add (signatures, signature);
@@ -538,7 +538,8 @@ pkcs7_get_signatures (Pkcs7Ctx *pkcs7, gboolean verify)
 		g_mime_certificate_set_fingerprint (signature->cert, sig->fpr);
 		g_mime_signature_set_expires (signature, sig->exp_timestamp);
 		g_mime_signature_set_created (signature, sig->timestamp);
-		
+		g_mime_signature_set_summary(signature, sig->summary);
+                
 		if (sig->exp_timestamp != 0 && sig->exp_timestamp <= time (NULL)) {
 			/* signature expired, automatically results in a BAD signature */
 			signature->errors |= GMIME_SIGNATURE_ERROR_EXPSIG;

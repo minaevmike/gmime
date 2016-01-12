@@ -395,6 +395,7 @@ libgmime-2.6.so.0 libgmime-2.6-0 #MINVER#
  g_mime_signature_get_errors@Base 2.6.4
  g_mime_signature_get_expires@Base 2.6.4
  g_mime_signature_get_status@Base 2.6.4
+ g_mime_signature_get_summary@Base 2.6.20
  g_mime_signature_get_type@Base 2.6.4
  g_mime_signature_list_add@Base 2.6.4
  g_mime_signature_list_clear@Base 2.6.4
@@ -414,6 +415,7 @@ libgmime-2.6.so.0 libgmime-2.6-0 #MINVER#
  g_mime_signature_set_errors@Base 2.6.4
  g_mime_signature_set_expires@Base 2.6.4
  g_mime_signature_set_status@Base 2.6.4
+ g_mime_signature_set_summary@Base 2.6.20
  g_mime_stream_buffer_get_type@Base 2.6.4
  g_mime_stream_buffer_gets@Base 2.6.4
  g_mime_stream_buffer_new@Base 2.6.4

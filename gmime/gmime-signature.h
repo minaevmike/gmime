@@ -86,6 +86,34 @@ typedef enum {
 
 
 /**
+ * GMimeSignatureSummary:
+ * @GMIME_SIGSUM_VALID: The signature is fully valid.
+ * @GMIME_SIGSUM_GREEN: The signature is good.
+ * @GMIME_SIGSUM_RED: The signature is bad.
+ * @GMIME_SIGSUM_KEY_REVOKED: One key has been revoked.
+ * @GMIME_SIGSUM_KEY_EXPIRED: One key has expired.
+ * @GMIME_SIGSUM_SIG_EXPIRED: The signature has expired.
+ * @GMIME_SIGSUM_KEY_MISSING: Can't verify: key missing.
+ * @GMIME_SIGSUM_CRL_MISSING: CRL not available.
+ * @GMIME_SIGSUM_CRL_TOO_OLD: Available CRL is too old. 
+ * @GMIME_SIGSUM_BAD_POLICY: A policy was not met.
+ * @GMIME_SIGSUM_SYS_ERROR: A system error occured.
+ **/
+typedef enum {
+        GMIME_SIGSUM_VALID       = 0x0001,
+        GMIME_SIGSUM_GREEN       = 0x0002,
+        GMIME_SIGSUM_RED         = 0x0004,
+        GMIME_SIGSUM_KEY_REVOKED = 0x0010,
+        GMIME_SIGSUM_KEY_EXPIRED = 0x0020,
+        GMIME_SIGSUM_SIG_EXPIRED = 0x0040,
+        GMIME_SIGSUM_KEY_MISSING = 0x0080,
+        GMIME_SIGSUM_CRL_MISSING = 0x0100,
+        GMIME_SIGSUM_CRL_TOO_OLD = 0x0200,
+        GMIME_SIGSUM_BAD_POLICY  = 0x0400,
+        GMIME_SIGSUM_SYS_ERROR   = 0x0800,
+} GMimeSignatureSummary;
+
+/**
  * GMimeSignature:
  * @parent_object: parent #GObject
  * @status: A #GMimeSignatureStatus.
@@ -104,6 +132,7 @@ struct _GMimeSignature {
 	GMimeCertificate *cert;
 	time_t created;
 	time_t expires;
+        GMimeSignatureSummary summary;
 };
 
 struct _GMimeSignatureClass {
@@ -131,6 +160,8 @@ time_t g_mime_signature_get_created (GMimeSignature *sig);
 void g_mime_signature_set_expires (GMimeSignature *sig, time_t expires);
 time_t g_mime_signature_get_expires (GMimeSignature *sig);
 
+void g_mime_signature_set_summary(GMimeSignature *sig, GMimeSignatureSummary summary);
+GMimeSignatureSummary g_mime_signature_get_summary(GMimeSignature *sig);
 
 /**
  * GMimeSignatureList:

@@ -85,6 +85,7 @@ g_mime_signature_init (GMimeSignature *sig, GMimeSignatureClass *klass)
 {
 	sig->status = GMIME_SIGNATURE_STATUS_GOOD;
 	sig->errors = GMIME_SIGNATURE_ERROR_NONE;
+        sig->summary = GMIME_SIGSUM_VALID;
 	sig->cert = g_mime_certificate_new ();
 	sig->created = (time_t) -1;
 	sig->expires = (time_t) -1;
@@ -275,6 +276,36 @@ g_mime_signature_set_expires (GMimeSignature *sig, time_t expires)
 	sig->expires = expires;
 }
 
+/**
+ * g_mime_signature_get_summary:
+ * @sig: a #GMimeSignature
+ * 
+ * Get summary of signature status
+ * 
+ * Returns: a #GMimeSignatureSummary
+ **/
+GMimeSignatureSummary 
+g_mime_signature_get_summary(GMimeSignature *sig)
+{
+        g_return_val_if_fail (GMIME_IS_SIGNATURE (sig), GMIME_SIGSUM_RED);
+        return sig->summary;
+}
+
+/**
+ * g_mime_signature_set_summary:
+ * @sig: a #GMimeSignature
+ * @summary: a #GMimeSignatureSummary
+ * 
+ * Set sgnature summary status
+ * 
+ */
+void 
+g_mime_signature_set_summary(GMimeSignature *sig, GMimeSignatureSummary summary)
+{
+        g_return_if_fail (GMIME_IS_SIGNATURE (sig));
+
+        sig->summary = summary;
+}
 
 /**
  * g_mime_signature_get_expires:
